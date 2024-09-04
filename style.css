@@ -1,0 +1,17 @@
+*{
+    background-color: rgb(85, 85, 85);
+}
+
+#game{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 5%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#myCanva{
+    background-color: black;
+}
