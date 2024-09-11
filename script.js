@@ -13,6 +13,8 @@ function draw() {
 function start() {
   started = true;
 
+  ctx.clearRect(raqDoisX, 0, 10, 400);
+
   //variaveis bola
   let raio = 5
   let ballX = 300
@@ -113,6 +115,8 @@ function start() {
     if (moveDownDois && raqDoisY + 60 < 400) {
       raqDoisY += 5;
     }
+
+    ctx.clearRect(0, 0, canvaWidth, canvaWidth);
 
     wallCollideBall();
     moveBall();
