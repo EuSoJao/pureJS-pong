@@ -69,13 +69,13 @@ function start() {
   }
 
   function raqCollide() {
-    if (ballX - raio <= raqUmX + 60 && ballX + raio >= raqUmX) {
-      if (ballY >= raqUmY && ballY <= raqUmY + 10) {
+    if (ballX - raio <= raqUmX + 10 && ballX + raio >= raqUmX) {
+      if (ballY >= raqUmY && ballY <= raqUmY + 60) {
         ballSpeedX *= -1;
       }
     }
-    if (ballY - raio <= raqDoisX + 60 && ballX + raio >= raqDoisX) {
-      if (ballY >= raqDoisY && ballY <= raqDoisY + 10) {
+    if (ballY - raio <= raqDoisX + 10 && ballX + raio >= raqDoisX) {
+      if (ballY >= raqDoisY && ballY <= raqDoisY + 60) {
         ballSpeedX *= -1;
       }
     }
@@ -100,9 +100,13 @@ function start() {
 
   function point(){
     if(ballX <= raqUmX){
+      ballX = 300
+      ballY = 200
       pointDois += 1
     }
     if(ballX => raqDoisX){
+      ballX = 300
+      ballY = 200
       pointUm += 1
     }
   }
@@ -153,6 +157,8 @@ function start() {
 
     ctx.clearRect(0, 0, canvaWidth, canvaWidth);
 
+    pointText();
+    point();
     raqCollide();
     wallCollideBall();
     moveBall();
