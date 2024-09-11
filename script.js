@@ -27,12 +27,14 @@ function start() {
   let raqUmY = 150;
   let moveUpUm;
   let moveDownUm;
+  let pointUm = 0;
 
   //variaveis raqueteDois
   let raqDoisX = 580;
   let raqDoisY = 150;
   let moveUpDois;
   let moveDownDois;
+  let pointDois = 0;
 
   function drawRaq() {
     ctx.beginPath();
@@ -88,6 +90,23 @@ function start() {
     }
   }
 
+  function pointText(){
+    ctx.beginPath()
+    ctx.fillText(pointUm, 290, 10)
+    ctx.fillText(pointDois, 310, 10)
+    ctx.fillStyle = "red"
+    ctx.closePath()
+  }
+
+  function point(){
+    if(ballX <= raqUmX){
+      pointDois += 1
+    }
+    if(ballX => raqDoisX){
+      pointUm += 1
+    }
+  }
+
   addEventListener("keydown", (event) => {
     if (event.keyCode === 87) {
       moveUpUm = true;
@@ -134,6 +153,7 @@ function start() {
 
     ctx.clearRect(0, 0, canvaWidth, canvaWidth);
 
+    raqCollide();
     wallCollideBall();
     moveBall();
     drawBola();
