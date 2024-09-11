@@ -104,7 +104,7 @@ function start() {
       ballY = 200
       pointDois += 1
     }
-    if(ballX => raqDoisX){
+    if(ballX >= raqDoisX){
       ballX = 300
       ballY = 200
       pointUm += 1
