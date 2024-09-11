@@ -35,10 +35,9 @@ function start() {
   let moveDownDois;
 
   function drawRaq() {
-    /*ctx.clearRect(0, 0, canvas.width, canvas.height);*/
     ctx.beginPath();
-    ctx.clearRect(10, 0, 10, 400);
-    //ctx.rect(raqUmX, raqUmY, 10, 60);
+    //ctx.clearRect(10, 0, 10, 400);
+    ctx.rect(raqUmX, raqUmY, 10, 60);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
@@ -74,7 +73,7 @@ function start() {
       }
     }
     if (ballY - raio <= raqDoisX + 60 && ballX + raio >= raqDoisX) {
-      if (ballY >= raqDoisY && ballY <= raqUmY + 10) {
+      if (ballY >= raqDoisY && ballY <= raqDoisY + 10) {
         ballSpeedX *= -1;
       }
     }
