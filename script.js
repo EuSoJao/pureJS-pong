@@ -13,14 +13,14 @@ function draw() {
 function start() {
   started = true;
 
-  ctx.clearRect(raqDoisX, 0, 10, 400);
+  ctx.clearRect(0, 0, 10, 400);
 
   //variaveis bola
-  let raio = 5
-  let ballX = 300
-  let ballY =200
-  let ballSpeedX = 5
-  let ballSpeedY = 5
+  let raio = 5;
+  let ballX = 300;
+  let ballY = 200;
+  let ballSpeedX = 5;
+  let ballSpeedY = 5;
 
   //variaveis raqueteUm
   let raqUmX = 10;
@@ -38,7 +38,7 @@ function start() {
     /*ctx.clearRect(0, 0, canvas.width, canvas.height);*/
     ctx.beginPath();
     ctx.clearRect(10, 0, 10, 400);
-    ctx.rect(raqUmX, raqUmY, 10, 60);
+    //ctx.rect(raqUmX, raqUmY, 10, 60);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
@@ -46,7 +46,7 @@ function start() {
 
   function drawRaqDois() {
     ctx.beginPath();
-    ctx.clearRect(raqDoisX, 0, 10, 400);
+    //ctx.clearRect(raqDoisX, 0, 10, 400);
     ctx.rect(raqDoisX, raqDoisY, 10, 60);
     ctx.fillStyle = "white";
     ctx.fill();
@@ -55,20 +55,37 @@ function start() {
 
   function drawBola() {
     ctx.beginPath();
-    ctx.clearRect(ballX + 1, ballY, raio, raio)
+    //ctx.clearRect(ballX + 1, ballY, raio, raio)
     bola = ctx.arc(ballX, ballY, raio, 0, 2 * Math.PI); // Desenhar um círculo completo
     ctx.fillStyle = "white";
     ctx.fill(); // Preencher o círculo
     ctx.closePath();
   }
 
-  function moveBall(){
-    ballX += ballSpeedX
+  function moveBall() {
+    ballX += ballSpeedX;
+    ballY += ballSpeedY;
   }
 
-  function wallCollideBall(){
-    if(ballX - raio > 600 || ballX + raio < 0) {
-      ballSpeedX *= -1
+  function raqCollide() {
+    if (ballX - raio <= raqUmX + 60 && ballX + raio >= raqUmX) {
+      if (ballY >= raqUmY && ballY <= raqUmY + 10) {
+        ballSpeedX *= -1;
+      }
+    }
+    if (ballY - raio <= raqDoisX + 60 && ballX + raio >= raqDoisX) {
+      if (ballY >= raqDoisY && ballY <= raqUmY + 10) {
+        ballSpeedX *= -1;
+      }
+    }
+  }
+
+  function wallCollideBall() {
+    if (ballX + raio > 600 || ballX - raio < 0) {
+      ballSpeedX *= -1;
+    }
+    if (ballY + raio > 400 || ballY - raio < 0) {
+      ballSpeedY *= -1;
     }
   }
 
@@ -128,7 +145,6 @@ function start() {
 
   update();
 }
-
 
 canvas.addEventListener("click", () => {
   if (started === false) {
